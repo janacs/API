@@ -1,27 +1,33 @@
-//importar o axios
-import axios from "axios"
-import { useEffect } from "react";
-//o axios é uma biblioteca JavaScript para facilitar as requisições HTTP, buscar dados de API de forma simples
-export default function App() {
+import React from "react";
+import Home from "./Components/Home";
+import Loja from "./Components/Loja";
+import Serie from "./Components/Serie";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-  const [info, setInfo] = useState({})
-  //função que vai pegar os dados da API, assíncrona
-  const getDados = async () => {
-    //variavel
-    const dados = await axios.get("https://rickandmortyapi.com/api/character/");
-    
-    setInfo(dados.data.results)
-    console.log(dados)
-  }
-
-  //para executar a API assim que for montada a página
-
-  useEffect(()=>{
-    getDados()
-  },[])
+function App() {
   return (
-    <main>
-      <h1>API - Rick and Morty</h1>
-    </main>
+    <>
+      <BrowserRouter>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/loja">API Loja</Link>
+            </li>
+            <li>
+              <Link to="/serie">API Serie Rick e Morty</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/loja" element={<Loja />} />
+          <Route path="/serie" element={<Serie />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
+export default App;
