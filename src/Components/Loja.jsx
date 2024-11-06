@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
+
 //O Axios é uma biblioteca JavaScript que facilita fazer requisições HTTP, ou seja, buscar dados de APIs e servidores externos, ou enviar dados para eles. Com o Axios, você pode fazer requisições do tipo GET, POST, PUT, DELETE
 
 function Loja() {
